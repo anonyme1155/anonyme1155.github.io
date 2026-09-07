@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages — Il Ponte</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a href="/" class="logo">Il Ponte</a>
+      <div class="sous-logo">Back-office</div>
+      <ul class="admin-nav">
+        <li><a href="/admin/dashboard.html">Tableau de bord</a></li>
+        <li><a href="/admin/factures.html">Factures</a></li>
+        <li><a href="/admin/messages.html" class="actif">Messages</a></li>
+        <li><a href="/admin/contenu.html">Contenu du site</a></li>
+        <li><a href="/admin/utilisateurs.html">Utilisateurs</a></li>
+      </ul>
+      <div class="admin-user">
+        Connecté en tant que<br />
+        <strong data-champ="utilisateur-nom">…</strong>
+        <div class="role" data-champ="utilisateur-role">…</div>
+        <button id="btn-deconnexion">Se déconnecter</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Messages</h1>
+          <p>Messages envoyés par les clients depuis le formulaire de contact.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Nom</th><th>Email</th><th>Message</th><th>Date</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="table-messages">
+            <tr><td colspan="5" class="vide">Chargement…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+  <script>
+    protegerPage(["admin", "gerant", "employe"]).then((user) => {
+      if (!user) return;
+      initDeconnexion();
+      initMessages();
+    });
+  </script>
+</body>
+</html>

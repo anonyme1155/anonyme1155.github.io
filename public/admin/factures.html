@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factures — Il Ponte</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a href="/" class="logo">Il Ponte</a>
+      <div class="sous-logo">Back-office</div>
+      <ul class="admin-nav">
+        <li><a href="/admin/dashboard.html">Tableau de bord</a></li>
+        <li><a href="/admin/factures.html" class="actif">Factures</a></li>
+        <li><a href="/admin/messages.html">Messages</a></li>
+        <li><a href="/admin/contenu.html">Contenu du site</a></li>
+        <li><a href="/admin/utilisateurs.html">Utilisateurs</a></li>
+      </ul>
+      <div class="admin-user">
+        Connecté en tant que<br />
+        <strong data-champ="utilisateur-nom">…</strong>
+        <div class="role" data-champ="utilisateur-role">…</div>
+        <button id="btn-deconnexion">Se déconnecter</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Factures</h1>
+          <p>Créez et suivez vos factures clients.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Nouvelle facture</h2>
+        <form id="form-nouvelle-facture">
+          <div class="form-row" style="margin-bottom:16px;">
+            <div class="form-champ">
+              <label for="clientNom">Nom du client</label>
+              <input type="text" id="clientNom" name="clientNom" required />
+            </div>
+            <div class="form-champ">
+              <label for="clientAdresse">Adresse (optionnel)</label>
+              <input type="text" id="clientAdresse" name="clientAdresse" />
+            </div>
+            <div class="form-champ">
+              <label for="clientEmail">Email (optionnel)</label>
+              <input type="email" id="clientEmail" name="clientEmail" />
+            </div>
+          </div>
+
+          <label style="display:block;margin-bottom:8px;font-size:0.9rem;color:var(--texte-clair);">Lignes de facturation</label>
+          <div id="lignes-facture" class="lignes-facture"></div>
+          <button type="button" id="btn-ajouter-ligne" class="btn btn-small btn-outline" style="margin-bottom:20px;">+ Ajouter une ligne</button>
+
+          <div class="form-row" style="margin-bottom:16px;">
+            <div class="form-champ">
+              <label for="statut">Statut</label>
+              <select id="statut" name="statut">
+                <option value="en attente">En attente</option>
+                <option value="payée">Payée</option>
+              </select>
+            </div>
+            <div class="form-champ">
+              <label for="notes">Notes (optionnel)</label>
+              <input type="text" id="notes" name="notes" />
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Créer la facture</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Toutes les factures</h2>
+        <table class="admin-table">
+          <thead>
+            <tr><th>N°</th><th>Client</th><th>Date</th><th>Total</th><th>Statut</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="table-factures">
+            <tr><td colspan="6" class="vide">Chargement…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+  <script>
+    protegerPage(["admin", "gerant"]).then((user) => {
+      if (!user) return;
+      initDeconnexion();
+      initFactures();
+    });
+  </script>
+</body>
+</html>

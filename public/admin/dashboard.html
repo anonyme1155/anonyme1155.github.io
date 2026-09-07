@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau de bord — Il Ponte</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a href="/" class="logo">Il Ponte</a>
+      <div class="sous-logo">Back-office</div>
+      <ul class="admin-nav">
+        <li><a href="/admin/dashboard.html" class="actif">Tableau de bord</a></li>
+        <li><a href="/admin/factures.html">Factures</a></li>
+        <li><a href="/admin/messages.html">Messages</a></li>
+        <li><a href="/admin/contenu.html">Contenu du site</a></li>
+        <li><a href="/admin/utilisateurs.html">Utilisateurs</a></li>
+      </ul>
+      <div class="admin-user">
+        Connecté en tant que<br />
+        <strong data-champ="utilisateur-nom">…</strong>
+        <div class="role" data-champ="utilisateur-role">…</div>
+        <button id="btn-deconnexion">Se déconnecter</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Tableau de bord</h1>
+          <p>Vue d'ensemble de l'activité du restaurant.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="valeur" id="stat-factures">–</div>
+          <div class="label">Factures émises</div>
+        </div>
+        <div class="stat-card">
+          <div class="valeur" id="stat-ca">–</div>
+          <div class="label">Chiffre d'affaires encaissé</div>
+        </div>
+        <div class="stat-card">
+          <div class="valeur" id="stat-attente">–</div>
+          <div class="label">Factures en attente</div>
+        </div>
+        <div class="stat-card">
+          <div class="valeur" id="stat-messages">–</div>
+          <div class="label">Messages non lus</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Dernières factures</h2>
+        <table class="admin-table">
+          <thead>
+            <tr><th>N°</th><th>Client</th><th>Date</th><th>Statut</th></tr>
+          </thead>
+          <tbody id="dashboard-factures-recentes">
+            <tr><td colspan="4" class="vide">Chargement…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2>Derniers messages</h2>
+        <table class="admin-table">
+          <thead>
+            <tr><th>Nom</th><th>Email</th><th>Date</th><th>Statut</th></tr>
+          </thead>
+          <tbody id="dashboard-messages-recents">
+            <tr><td colspan="4" class="vide">Chargement…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+  <script>
+    protegerPage().then((user) => {
+      if (!user) return;
+      initDeconnexion();
+      initDashboard(user);
+    });
+  </script>
+</body>
+</html>

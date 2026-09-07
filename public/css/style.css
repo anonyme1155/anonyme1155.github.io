@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Beige = couleur principale du site */
+  --beige: #efe4cd;
+  --beige-fonce: #e2d3af;
+  --beige-profond: #cdb886;
+  --creme: #f8f2e2;
+
+  /* Accents Italie */
+  --vert-italie: #33553d;
+  --vert-italie-clair: #46704f;
+  --rouge-italie: #ad3327;
+  --rouge-italie-fonce: #8c281e;
+  --or: #b8863f;
+
+  --expresso: #2a2013;
+  --texte: #2f2416;
+  --texte-clair: #6e5f47;
+
+  --font-titre: 'Fraunces', Georgia, serif;
+  --font-texte: 'Manrope', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-texte);
+  color: var(--texte);
+  background: var(--beige);
+  line-height: 1.65;
+}
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Petit ruban tricolore, discret, en clin d'œil à l'Italie */
+.ruban-italie {
+  height: 4px;
+  background: linear-gradient(to right, var(--vert-italie) 0 33.3%, var(--creme) 33.3% 66.6%, var(--rouge-italie) 66.6% 100%);
+}
+
+/* --- Navigation --- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(239, 228, 205, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(42, 32, 19, 0.1);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  font-family: var(--font-titre);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--vert-italie);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--texte);
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.actif {
+  border-bottom-color: var(--rouge-italie);
+  color: var(--rouge-italie-fonce);
+}
+
+.nav-cta {
+  padding: 10px 22px !important;
+  background: var(--rouge-italie);
+  color: #fff !important;
+  border-radius: 30px;
+  border-bottom: none !important;
+}
+.nav-cta:hover { background: var(--rouge-italie-fonce) !important; color: #fff !important; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--vert-italie);
+}
+
+/* --- Bannière avertissement (ouverture en file://) --- */
+.avertissement-local {
+  background: var(--rouge-italie);
+  color: #fff;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-family: var(--font-texte);
+}
+.avertissement-local code {
+  background: rgba(255,255,255,0.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* --- Hero --- */
+.hero {
+  background: var(--beige);
+  padding: 72px 24px 96px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.eyebrow-italie {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--vert-italie);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: clamp(2.7rem, 5vw, 4.2rem);
+  line-height: 1.06;
+  margin: 0 0 22px;
+  color: var(--expresso);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--texte-clair);
+  max-width: 42ch;
+  margin: 0 0 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.hero-visual svg { width: 100%; height: 100%; }
+
+/* --- Boutons --- */
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background: var(--rouge-italie);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: background 0.2s ease, transform 0.15s ease;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-texte);
+  font-size: 1rem;
+}
+
+.btn:hover { background: var(--rouge-italie-fonce); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--vert-italie);
+  color: var(--vert-italie);
+}
+
+.btn-outline:hover {
+  background: var(--vert-italie);
+  color: #fff;
+}
+
+/* --- Sections génériques --- */
+.section {
+  padding: 88px 0;
+}
+
+.section-alt {
+  background: var(--beige-fonce);
+}
+
+.eyebrow {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--rouge-italie);
+  margin: 0 0 10px;
+}
+
+.section-title {
+  font-family: var(--font-titre);
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: var(--expresso);
+  margin: 0 0 14px;
+}
+
+.section-intro {
+  color: var(--texte-clair);
+  max-width: 60ch;
+  margin: 0 0 48px;
+  font-size: 1.08rem;
+}
+
+/* --- A propos --- */
+.apropos {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.apropos-visual { aspect-ratio: 3 / 4; }
+.apropos-visual svg { width: 100%; height: 100%; }
+
+.chiffres {
+  display: flex;
+  gap: 40px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.chiffre .valeur {
+  font-family: var(--font-titre);
+  font-size: 2.1rem;
+  color: var(--rouge-italie);
+  font-weight: 600;
+}
+
+.chiffre .label {
+  font-size: 0.88rem;
+  color: var(--texte-clair);
+}
+
+/* --- Points forts (accueil) --- */
+.points-forts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.point-fort {
+  background: var(--creme);
+  padding: 32px 28px;
+  border-radius: 6px;
+  border-top: 3px solid var(--rouge-italie);
+}
+
+.point-fort svg { width: 36px; height: 36px; margin-bottom: 16px; color: var(--vert-italie); }
+
+.point-fort h3 {
+  font-family: var(--font-titre);
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+  color: var(--expresso);
+}
+
+.point-fort p {
+  color: var(--texte-clair);
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+/* --- Carte / Menu --- */
+.menu-categorie {
+  margin-bottom: 48px;
+}
+
+.menu-categorie h3 {
+  font-family: var(--font-titre);
+  font-size: 1.5rem;
+  color: var(--rouge-italie);
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(42, 32, 19, 0.15);
+}
+
+.menu-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 11px 0;
+}
+
+.menu-item .nom { flex-shrink: 0; font-weight: 500; }
+
+.menu-item .leader {
+  flex: 1;
+  border-bottom: 1px dotted rgba(42, 32, 19, 0.3);
+  transform: translateY(-4px);
+}
+
+.menu-item .prix {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--vert-italie);
+}
+
+/* --- Horaires / contact --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+
+.horaires-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horaires-liste li {
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(42, 32, 19, 0.1);
+}
+
+.contact-details p { margin: 0 0 10px; }
+
+.contact-details a {
+  text-decoration: none;
+  color: var(--rouge-italie);
+  font-weight: 600;
+}
+
+/* --- Formulaire de contact --- */
+.form-champ { margin-bottom: 20px; }
+
+.form-champ label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--texte-clair);
+  font-weight: 500;
+}
+
+.form-champ input,
+.form-champ textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid rgba(42, 32, 19, 0.18);
+  border-radius: 6px;
+  font-family: var(--font-texte);
+  font-size: 1rem;
+  background: var(--creme);
+}
+
+.form-champ input:focus,
+.form-champ textarea:focus {
+  outline: none;
+  border-color: var(--vert-italie);
+}
+
+.form-champ textarea { resize: vertical; min-height: 120px; }
+
+.form-message { margin-top: 16px; font-size: 0.95rem; }
+.form-message.succes { color: var(--vert-italie); }
+.form-message.erreur { color: var(--rouge-italie); }
+
+/* --- Footer --- */
+.footer {
+  background: var(--expresso);
+  color: rgba(248, 242, 226, 0.75);
+  padding: 52px 24px 32px;
+  font-size: 0.9rem;
+}
+
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer a { color: rgba(248, 242, 226, 0.9); text-decoration: none; }
+.footer-admin-link { opacity: 0.5; font-size: 0.8rem; }
+
+/* --- Login --- */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vert-italie);
+  padding: 24px;
+}
+
+.login-box {
+  background: var(--creme);
+  padding: 48px 40px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-box h1 {
+  font-family: var(--font-titre);
+  font-size: 1.7rem;
+  color: var(--vert-italie);
+  margin: 0 0 8px;
+}
+
+.login-box p.sub {
+  color: var(--texte-clair);
+  margin: 0 0 28px;
+  font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .points-forts { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 800px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; max-width: 320px; margin: 0 auto; }
+  .apropos { grid-template-columns: 1fr; }
+  .apropos-visual { max-width: 320px; margin: 0 auto; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--beige);
+    flex-direction: column;
+    gap: 0;
+    display: none;
+    border-bottom: 1px solid rgba(42,32,19,0.1);
+  }
+  .nav-links.ouvert { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 16px 24px; border-bottom: 1px solid rgba(42,32,19,0.06); }
+  .nav-cta { margin: 12px 24px; text-align: center; }
+  .nav-toggle { display: block; }
+}

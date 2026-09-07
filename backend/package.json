@@ -1,0 +1,15 @@
+{
+  "name": "il-ponte-backend",
+  "version": "1.0.0",
+  "description": "Backend du site Il Ponte - trattoria italienne à Perpignan (vitrine + facturation + back-office)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "pdfkit": "^0.15.0"
+  }
+}

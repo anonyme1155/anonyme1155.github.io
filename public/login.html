@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion — Il Ponte</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-box">
+      <div class="ruban-italie" style="margin: -48px -40px 32px;border-radius:8px 8px 0 0;"></div>
+      <h1>Espace équipe</h1>
+      <p class="sub">Connectez-vous pour gérer le site et les factures.</p>
+      <form id="form-login">
+        <div class="form-champ">
+          <label for="username">Identifiant</label>
+          <input type="text" id="username" name="username" required autofocus />
+        </div>
+        <div class="form-champ">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn" style="width:100%;">Se connecter</button>
+        <p id="login-message" class="form-message"></p>
+      </form>
+      <p style="margin-top:24px;"><a href="/" style="font-size:0.9rem;color:var(--texte-clair);">← Retour au site</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector("#form-login").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const messageEl = document.querySelector("#login-message");
+      const username = document.querySelector("#username").value.trim();
+      const password = document.querySelector("#password").value;
+      try {
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Erreur de connexion");
+        window.location.href = "/admin/dashboard.html";
+      } catch (err) {
+        messageEl.textContent = err.message;
+        messageEl.className = "form-message erreur";
+      }
+    });
+  </script>
+</body>
+</html>

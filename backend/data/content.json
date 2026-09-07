@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "nom": "Il Ponte",
+    "titre": "La cuisine italienne comme là-bas",
+    "sousTitre": "Trattoria familiale au cœur de Perpignan, pâtes fraîches faites maison chaque matin.",
+    "texteBouton": "Voir la carte"
+  },
+  "apropos": {
+    "titre": "Notre histoire",
+    "texte": "Il Ponte a ouvert ses portes cette année à Perpignan, porté par l'envie de partager une cuisine italienne simple et sincère : pâtes fraîches, produits de saison, recettes transmises en famille depuis trois générations entre les Pouilles et la Toscane. Ici, tout est préparé sur place, chaque jour."
+  },
+  "horaires": [
+    { "jour": "Lundi", "heures": "Fermé" },
+    { "jour": "Mardi", "heures": "12h00 - 14h30 / 19h00 - 22h30" },
+    { "jour": "Mercredi", "heures": "12h00 - 14h30 / 19h00 - 22h30" },
+    { "jour": "Jeudi", "heures": "12h00 - 14h30 / 19h00 - 22h30" },
+    { "jour": "Vendredi", "heures": "12h00 - 14h30 / 19h00 - 23h00" },
+    { "jour": "Samedi", "heures": "12h00 - 14h30 / 19h00 - 23h00" },
+    { "jour": "Dimanche", "heures": "12h00 - 15h00" }
+  ],
+  "contact": {
+    "adresse": "12 Rue de la Fusterie, 66000 Perpignan",
+    "telephone": "04 68 00 00 00",
+    "email": "contact@ilponte-perpignan.fr"
+  },
+  "menu": [
+    {
+      "categorie": "Antipasti",
+      "plats": [
+        { "nom": "Burrata pouilleuse, tomates confites, basilic", "prix": 12 },
+        { "nom": "Carpaccio de bœuf, copeaux de parmesan, roquette", "prix": 13 },
+        { "nom": "Planche de charcuterie et fromages italiens", "prix": 16 }
+      ]
+    },
+    {
+      "categorie": "Primi (pâtes fraîches maison)",
+      "plats": [
+        { "nom": "Tagliatelles au ragù de bœuf mijoté 6 heures", "prix": 15 },
+        { "nom": "Pappardelle aux cèpes et crème de parmesan", "prix": 16 },
+        { "nom": "Raviolis ricotta-épinards, beurre de sauge", "prix": 15 }
+      ]
+    },
+    {
+      "categorie": "Secondi",
+      "plats": [
+        { "nom": "Osso buco, gremolata, polenta crémeuse", "prix": 22 },
+        { "nom": "Escalope de veau à la milanaise", "prix": 19 },
+        { "nom": "Loup grillé, légumes de saison", "prix": 21 }
+      ]
+    },
+    {
+      "categorie": "Dolci",
+      "plats": [
+        { "nom": "Tiramisu maison", "prix": 7 },
+        { "nom": "Panna cotta, coulis de fruits rouges", "prix": 7 },
+        { "nom": "Cannoli siciliens", "prix": 6 }
+      ]
+    },
+    {
+      "categorie": "Boissons",
+      "plats": [
+        { "nom": "Verre de Chianti", "prix": 6 },
+        { "nom": "Café expresso", "prix": 2 },
+        { "nom": "Eau minérale 75cl", "prix": 4 }
+      ]
+    }
+  ]
+}
